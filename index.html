@@ -77,11 +77,12 @@ canvas{position:absolute;inset:0;pointer-events:none;}
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-title" content="Orthoptique">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#00FFD1">
 <script>
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('sw.js').catch(function(){});
   });
 }
 </script>
@@ -93,19 +94,19 @@ if('serviceWorker' in navigator){
   <h1>EXERCICES VISUELS<br>ORTHOPTIQUES</h1>
   <p class="sub">40–60 cm · Yeux uniquement · Ne pas bouger la tête</p>
   <div class="grid">
-    <div class="card" ontouchstart="" onclick="startOne(0)"><div class="num">01</div><div class="cname">VISION NOCTURNE</div><div class="cdesc">Adaptation obscurité</div></div>
-    <div class="card" ontouchstart="" onclick="startOne(1)"><div class="num">02</div><div class="cname">CONTRASTES</div><div class="cdesc">10 fonds · zoom lent</div></div>
-    <div class="card" ontouchstart="" onclick="startOne(2)"><div class="num">03</div><div class="cname">NETTETÉ</div><div class="cdesc">B/8 · O/0 · I/1 · S/5</div></div>
-    <div class="card" ontouchstart="" onclick="startOne(3)"><div class="num">04</div><div class="cname">ANTI-SUPPRESSION</div><div class="cdesc">Rouge/Vert · 2 yeux</div></div>
-    <div class="card" ontouchstart="" onclick="startOne(4)"><div class="num">05</div><div class="cname">ACCOMMODATION</div><div class="cdesc">Zoom près / loin</div></div>
-    <div class="card" ontouchstart="" onclick="startOne(5)"><div class="num">06</div><div class="cname">VERGENCES</div><div class="cdesc">Convergence + cercle</div></div>
-    <div class="card" ontouchstart="" onclick="startOne(6)"><div class="num">07</div><div class="cname">FUSION BINOCULAIRE</div><div class="cdesc">Chat · Paysage · Route</div></div>
-    <div class="card" ontouchstart="" onclick="startOne(7)"><div class="num">08</div><div class="cname">FIXATION PÉRIPHÉRIQUE</div><div class="cdesc">Central + périphérie</div></div>
-    <div class="card" ontouchstart="" onclick="startOne(8)"><div class="num">09</div><div class="cname">INFINI ↻↺</div><div class="cdesc">Lemniscate 2 sens</div></div>
-    <div class="card" ontouchstart="" onclick="startOne(9)"><div class="num">10</div><div class="cname">SACCADES MULTI-DIR.</div><div class="cdesc">↔ ↕ et 4 diagonales</div></div>
-    <div class="card" ontouchstart="" onclick="startOne(10)"><div class="num">11</div><div class="cname">BALAYAGE</div><div class="cdesc">6 AR · coins extrêmes</div></div>
-    <div class="card full" ontouchstart="" onclick="startOne(11)"><div style="font-size:.9rem">🟢</div><div><div class="cname">ZIGZAG SACCADIQUE</div><div class="cdesc">5 AR · 5s/trajet · dents de scie continues</div></div></div>
-    <div class="card full" ontouchstart="" onclick="startFull()"><div style="font-size:.9rem">▶</div><div><div class="cname">SÉQUENCE COMPLÈTE</div><div class="cdesc">12 exercices · ~12 min</div></div></div>
+    <div class="card" data-action="startOne" data-idx="0"><div class="num">01</div><div class="cname">VISION NOCTURNE</div><div class="cdesc">Adaptation obscurité</div></div>
+    <div class="card" data-action="startOne" data-idx="1"><div class="num">02</div><div class="cname">CONTRASTES</div><div class="cdesc">10 fonds · zoom lent</div></div>
+    <div class="card" data-action="startOne" data-idx="2"><div class="num">03</div><div class="cname">NETTETÉ</div><div class="cdesc">B/8 · O/0 · I/1 · S/5</div></div>
+    <div class="card" data-action="startOne" data-idx="3"><div class="num">04</div><div class="cname">ANTI-SUPPRESSION</div><div class="cdesc">Rouge/Vert · 2 yeux</div></div>
+    <div class="card" data-action="startOne" data-idx="4"><div class="num">05</div><div class="cname">ACCOMMODATION</div><div class="cdesc">Zoom près / loin</div></div>
+    <div class="card" data-action="startOne" data-idx="5"><div class="num">06</div><div class="cname">VERGENCES</div><div class="cdesc">Convergence + cercle</div></div>
+    <div class="card" data-action="startOne" data-idx="6"><div class="num">07</div><div class="cname">FUSION BINOCULAIRE</div><div class="cdesc">Chat · Paysage · Route</div></div>
+    <div class="card" data-action="startOne" data-idx="7"><div class="num">08</div><div class="cname">FIXATION PÉRIPHÉRIQUE</div><div class="cdesc">Central + périphérie</div></div>
+    <div class="card" data-action="startOne" data-idx="8"><div class="num">09</div><div class="cname">INFINI ↻↺</div><div class="cdesc">Lemniscate 2 sens</div></div>
+    <div class="card" data-action="startOne" data-idx="9"><div class="num">10</div><div class="cname">SACCADES MULTI-DIR.</div><div class="cdesc">↔ ↕ et 4 diagonales</div></div>
+    <div class="card" data-action="startOne" data-idx="10"><div class="num">11</div><div class="cname">BALAYAGE</div><div class="cdesc">6 AR · coins extrêmes</div></div>
+    <div class="card full" data-action="startOne" data-idx="11"><div style="font-size:.9rem">🟢</div><div><div class="cname">ZIGZAG SACCADIQUE</div><div class="cdesc">5 AR · 5s/trajet · dents de scie continues</div></div></div>
+    <div class="card full" data-action="startFull"><div style="font-size:.9rem">▶</div><div><div class="cname">SÉQUENCE COMPLÈTE</div><div class="cdesc">12 exercices · ~12 min</div></div></div>
   </div>
 </div>
 
@@ -135,7 +136,7 @@ if('serviceWorker' in navigator){
   <div id="a-bal" class="area" style="display:none;align-items:center;justify-content:center;"><div id="ball">← GAUCHE / DROITE →</div></div>
   <div id="a-zz" class="area"><div id="zzl">▼ DESCENTE</div></div>
   <div id="hud"><span id="htitle">—</span><span id="htimer">—</span></div>
-  <button id="qbtn" ontouchstart="" onclick="goHome()">✕ QUITTER</button>
+  <button id="qbtn" data-action="goHome">✕ QUITTER</button>
   <div id="prog"></div>
   <div id="ov"><div id="ovt">—</div><div id="ovp">—</div><div id="ovcd">3</div></div>
 </div>
@@ -143,7 +144,7 @@ if('serviceWorker' in navigator){
 <div id="end-s">
   <h2>SÉQUENCE<br>TERMINÉE ✓</h2>
   <p>Clignez lentement des yeux.<br>Regardez au loin quelques secondes.</p>
-  <button id="homebtn" ontouchstart="" onclick="goHome()">← RETOUR AU MENU</button>
+  <button id="homebtn" data-action="goHome">← RETOUR AU MENU</button>
 </div>
 </div>
 
@@ -173,8 +174,8 @@ const EX=[
 
 let queue=[],raf=null,iv=null,cleanFn=null,startTime=0,durMs=0,timerIv=null;
 const W=()=>document.getElementById('ex-wrap');
-const CW=()=>W().clientWidth||360;
-const CH=()=>W().clientHeight||700;
+const CW=()=>Math.max(window.innerWidth||360, document.documentElement.clientWidth||360, 320);
+const CH=()=>Math.max(window.innerHeight||700, document.documentElement.clientHeight||700, 500);
 
 function goHome(){
   stopAll();
@@ -205,6 +206,7 @@ function showOv(idx,cb){
 
 function launch(idx){
   stopAll();hideAll();
+  W().style.display='block';
   document.getElementById('app').style.background='#000';
   document.getElementById('htitle').textContent=`${String(idx+1).padStart(2,'0')} — ${EX[idx].name}`;
   durMs=EX[idx].dur*1000;startTime=performance.now();
@@ -677,6 +679,28 @@ function runZz(){
   drawLines(pathDown);raf=requestAnimationFrame(frame);
   cleanFn=()=>{document.getElementById('a-zz').style.display='none';dot.style.display='none';};
 }
+</script>
+
+<script>
+document.addEventListener('click', function(e){
+  var el = e.target.closest('[data-action]');
+  if(!el) return;
+  var action = el.getAttribute('data-action');
+  var idx = el.getAttribute('data-idx');
+  if(action === 'startOne') startOne(parseInt(idx));
+  else if(action === 'startFull') startFull();
+  else if(action === 'goHome') goHome();
+});
+document.addEventListener('touchend', function(e){
+  var el = e.target.closest('[data-action]');
+  if(!el) return;
+  e.preventDefault();
+  var action = el.getAttribute('data-action');
+  var idx = el.getAttribute('data-idx');
+  if(action === 'startOne') startOne(parseInt(idx));
+  else if(action === 'startFull') startFull();
+  else if(action === 'goHome') goHome();
+}, {passive: false});
 </script>
 </body>
 </html>
